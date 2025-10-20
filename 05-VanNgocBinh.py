@@ -46,8 +46,23 @@ def search_student(search_name):
     - In ra thông tin của các sinh viên tìm thấy (theo định dạng như hàm print_student_list).
     - Nếu không tìm thấy, in ra "Khong tim thay sinh vien nao.".
     """
-    ### VIẾT CODE CỦA BẠN VÀO ĐÂY ###
-    pass # Xóa dòng này khi bạn viết code
+    print("--- KET QUA TIM KIEM ---")
+    if not student_list:
+        print("Khong tim thay sinh vien nao.")
+        return
+    search_lower = search_name.lower()
+    results = [
+        s for s in student_list
+        if search_lower in s.get("name", "").lower()
+    ]
+    if not results:
+        print("Khong tim thay sinh vien nao.")
+        return
+    for s in results:
+        name = s.get("name", "")
+        year = s.get("year_of_birth", "")
+        address = s.get("address", "")
+        print(f" - Ten: {name}, Nam sinh: {year}, Dia chi: {address}")
 
 # --- Phần thực thi chính để kiểm tra ---
 # Sinh viên không cần chỉnh sửa phần này.
